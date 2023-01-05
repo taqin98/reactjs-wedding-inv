@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'Rosemary';
+  src: url('./fonts/Rosemary-Jasmine.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   url('./fonts/Rosemary-Jasmine.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('./fonts/Roboto-Light.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+@font-face {
+  font-family: 'Roboto Regular';
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+} 
+@font-face {
+  font-family: 'Roboto Black';
+  src: url('./fonts/Roboto-Black.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+} 
+
+body {
+	background: #2d433d;
+}
+
+.font-roboto-black {
+	font-family: 'Roboto Black';
+}
+.font-roboto-light {
+	font-family: 'Roboto Light';
+}
+.font-rosemary {
+	font-family: 'Rosemary';
+}
+
+.fs-8 { font-size: 2.5rem !important; }
+.fs-9 { font-size: 3rem !important; }
+
+.title-wedding {
+	color: rgb(16, 70, 54);
+	font-family: 'Roboto Light';
+}
+.name-wedding {
+	color: rgb(16, 70, 54);
+	font-family: 'Rosemary';
+	font-size: 6rem;
+	height: 7rem;
+}
+.subtitle-wedding {
+	color: rgb(16, 70, 54);
+	font-family: 'Roboto Regular';
+	font-weight: 500;
+	letter-spacing:  3px;
+} 
+.btn-open {
+	color: rgb(16, 70, 54);
+	border: 2px solid rgb(16, 70, 54);
+	font-size: 1rem;
+	font-weight: 700;
+	padding: 7px 30px;
+	animation-delay:  0.6s;
+	cursor:  pointer;
+	border-radius: 25rem;
+}
+.btn-open:hover {
+	color: rgb(16, 70, 54);
+	border-color: rgb(16, 70, 54);
+	box-shadow: rgb(194, 195, 196);
+}
+
+.quotes {
+	white-space: pre-wrap;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: inherit;
+    font-style: italic;
+    line-height: 1.7;
+}
+.padding-balance {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.font-rosemary_jasmine-title {
+    font-family: 'Rosemary';
+    font-size: 4.5rem;
+    line-height: .5!important;
+}
+svg {
+    overflow: hidden;
+}
+.shape {
+	position: relative;
+}
+.shape-fill {
+    fill: #2a433d;
+}
+.svg-cover {
+	position: absolute;
+	z-index: 1;
+	bottom: -1px;
+	left: 0;
+}
+.svg-bottom {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	right: -1px;
+	top: -10px;
+}
+.couple-img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+.date-title {
+	font-family: 'Rosemary';
+	color: #104636;
+	font-size:4.5rem;
+	height: 50px;
+	align-self: center;
+}
+.custom-quotes p {
+	max-width: 300px;
+}
+.shapeGalleries {
+    position: absolute;
+    width: 100%;
+    display: none;
+    bottom: -80px;
+    transform: rotate(180deg);
+}
+.shapeGalleries .elementor-shape-fill {
+	fill: #ecf4ef;
+}
+
+@media only screen (max-width: 600px) {
+	.title-wedding {
+		font-size: 1rem;
+	}
+	.name-wedding {
+		color: rgb(16, 70, 54);
+		font-family: 'Rosemary';
+		font-size: 5rem;
+		height: 6rem;
+	}
+	.subtitle-wedding {
+		font-size: .8rem; 
+	} 
+	.btn-open {
+		font-size: 1rem;
+		margin-top: 1.5rem !important;
+	}
+}
+@media only screen and (min-width: 600px) and (max-width: 1367px) {
+	.btn-open, .title-wedding {
+		font-size: 2.5rem;
+	}
+	.btn-open { font-weight: 500;}
+	.name-wedding {
+		font-size: 12rem;
+		height: 11.5rem;
+	}
+	.subtitle-wedding {
+		font-size: 2rem; 
+		letter-spacing:  5px;
+		margin-top: 1.2rem;
+	}
+  }
+  
