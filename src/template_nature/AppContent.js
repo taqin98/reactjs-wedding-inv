@@ -21,13 +21,14 @@ const SliderComponent = () => {
 			rewind={true}
 			>
 			<SwiperSlide>
-				<img className="w-100" src="https://cdn-uploads.our-wedding.link/fbbd89d0-e0b4-11eb-beb3-7d632315fafb.jpeg" alt="slider" />
+				{/* <img className="w-100" src="https://cdn-uploads.our-wedding.link/fbbd89d0-e0b4-11eb-beb3-7d632315fafb.jpeg" alt="slider" /> */}
+				<img className="w-100" src="./assets/images/gallery/DSCF0882.jpg" alt="slider" />
 			</SwiperSlide>
 			<SwiperSlide>
-				<img className="w-100" src="https://cdn-uploads.our-wedding.link/fbbd89d0-e0b4-11eb-beb3-7d632315fafb.jpeg" alt="slider" />
+				<img className="w-100" src="./assets/images/gallery/DSCF0898.jpg" alt="slider" />
 			</SwiperSlide>
 			<SwiperSlide>
-				<img className="w-100" src="https://cdn-uploads.our-wedding.link/a8fe7450-e0b6-11eb-beb3-7d632315fafb.jpeg" alt="slider" />
+				<img className="w-100" src="./assets/images/gallery/DSCF0872.jpg" alt="slider" />
 			</SwiperSlide>
 		</Swiper>
 		);
@@ -222,10 +223,15 @@ export default class AppContent extends Component {
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" data-v-2f258c8b=""><path fillOpacity="1" d="M 0 192 L 60 208 C 120 224 240 256 360 261.3 C 480 267 600 245 720 202.7 C 840 160 915 107 1080 106.7 C 1238 109 1270 130 1374 168 L 1439 193 L 1440 320 L 1380 320 C 1320 320 1200 320 1080 320 C 960 320 840 320 720 320 C 600 320 480 320 360 320 C 240 320 120 320 60 320 L 0 320 Z" className="shape-fill-buttom" data-v-2f258c8b=""></path>
 						</svg>
 						<div className="container bg-countdown flower-countdown" style={{"marginTop": "-0.5rem"}}>
-							<Card className="bg-transparent shadow-none border-0 text-white">
+							<Card className="bg-transparent shadow-none border-0 text-white" style={{
+								minHeight: 500
+							}}>
 								<Card.Title className="font-rosemary_jasmine-title mt-4">Acara Akan Diselenggarakan</Card.Title>
-								<Row className="mx-auto mt-5">
-									<Col xs={12} md={12} lg={12} className="mx-auto mt-5">
+								<Row className="mx-auto">
+									<Col xs={12} md={12} lg={12} className="mx-auto my-2">
+										<div className="object-suket my-4"></div>
+									</Col>
+									<Col xs={12} md={12} lg={12} className="mx-auto mt-2">
 										<h4 className="font-rosemary_jasmine-title">
 											Akad
 										</h4>
@@ -241,14 +247,11 @@ export default class AppContent extends Component {
 									(Rumah mempelai wanita)
 									</Col>
 								</Row>
-							</Card>
-						</div>
-						<div className="bg-countdown" style={{
-							minHeight: 300,
-							marginTop: -10,
-						}}>
-							<Card className="bg-transparent shadow-none border-0 text-white">
-								<Row className="mx-auto mt-5">
+
+								<Row className="mx-auto">
+								<Col xs={12} md={12} lg={12} className="mx-auto my-2">
+										<div className="object-suket my-4"></div>
+									</Col>
 									<Col xs={12} md={12} lg={12} className="mx-auto">
 										<h4 className="font-rosemary_jasmine-title">
 											Pengajian
@@ -265,6 +268,14 @@ export default class AppContent extends Component {
 									(Rumah mempelai wanita)
 									</Col>
 								</Row>
+							</Card>
+						</div>
+						<div className="bg-countdown" style={{
+							minHeight: 300,
+							marginTop: -10,
+						}}>
+							<Card className="bg-transparent shadow-none border-0 text-white">
+								
 								<div className="text-center">
 								<iframe 
 									src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d247.61069372334407!2d110.69865010210572!3d-6.7976801891523415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNDcnNTEuNSJTIDExMMKwNDEnNTUuNSJF!5e0!3m2!1sid!2sid!4v1705823078923!5m2!1sid!2sid" 
@@ -278,7 +289,9 @@ export default class AppContent extends Component {
 								<Button className="text-white rounded-5 mt-2 mb-4 mx-5" style={{
 									borderColor: "white",
 									backgroundColor: "#104636",
-								}}>Lihat Lokasi</Button>
+								}} onClick={
+									() => window.open("https://maps.app.goo.gl/8yaWThWTu2uDPX8H7?g_st=ic", "_blank")
+								}>Lihat Lokasi</Button>
 							</Card>
 						</div>
 					</div>
@@ -309,14 +322,27 @@ export default class AppContent extends Component {
 						</Row>
 					</Card>
 					<Card className="bg-transparent shadow-none border-0 text-black">
-						<Card.Title className="font-rosemary_jasmine-title mt-4 pt-4">Hiburan</Card.Title>
-						<Row className="mx-auto mt-2">
+						<div className="object-suket my-4"></div>
+						<Card.Title className="font-rosemary_jasmine-title pt-4">Hiburan</Card.Title>
+						<Row className="mx-auto">
 							<Col xs={12} md={12} lg={12} className="mx-auto">
 							Band Akustik
 							</Col>
 						</Row>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5580909155583!2d110.68729139999999!3d-6.5773177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e711f3f9a1fd34d%3A0x3a8e56bd530e1bb!2sSuntari%20Tailor%20Jepara!5e0!3m2!1sid!2sid!4v1705841974221!5m2!1sid!2sid" 
+						style={{
+							border:0,
+							marginTop: 25,
+							width: "100%",
+							height: "300px",
+						}} allowFullScreen loading={"lazy"} referrerPolicy={"no-referrer-when-downgrade"}></iframe>
+						<Button className="text-white rounded-5 mt-2 mb-4 mx-5" style={{
+							borderColor: "white",
+							backgroundColor: "#104636",
+						}} onClick={
+							() => window.open("https://maps.app.goo.gl/8yaWThWTu2uDPX8H7?g_st=ic", "_blank")
+						}>Lihat Lokasi</Button>
 					</Card>
-					<div className="object-suket"></div>
 				</section>
 			</div>
 		</React.Fragment>
