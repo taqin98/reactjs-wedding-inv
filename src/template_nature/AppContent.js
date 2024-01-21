@@ -37,7 +37,7 @@ export default class AppContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isHideCover: true,
+			isHideCover: false,
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
 	}
