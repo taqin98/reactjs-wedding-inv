@@ -3,7 +3,7 @@ import {Container, Button, Card,Row, Col} from 'react-bootstrap';
 import '../index.css';
 import './main.css';
 import Cover from './cover.webp';
-import MainImg from './main-image.webp';
+import MainImg from './main-image2.webp';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper";
 import 'swiper/css';
@@ -37,9 +37,10 @@ export default class AppContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isHideCover: false,
+			isHideCover: true,
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
+		console.log(process.env);
 	}
 	hideCover = () => {
 		this.setState({isHideCover : true})
@@ -90,6 +91,13 @@ export default class AppContent extends Component {
 					padding-bottom: 1rem;
 					background-image: url(./assets/images/template_1/flower2.png);
 					{/* background-size: cover; */}
+				}
+				.object-suket {
+					background-image: url(./assets/images/template_1/object-suket.png);
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: top;
+					height: 21px;
 				}
 			`}
 			</style>
@@ -308,6 +316,7 @@ export default class AppContent extends Component {
 							</Col>
 						</Row>
 					</Card>
+					<div className="object-suket"></div>
 				</section>
 			</div>
 		</React.Fragment>

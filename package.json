@@ -20,7 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_ENV=production REACT_APP_PUBLIC_URL=https://invitation-at.vercel.app/ react-scripts start",
+    "startdev": "NODE_ENV=development REACT_APP_PUBLIC_URL=http://localhost:3000/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
