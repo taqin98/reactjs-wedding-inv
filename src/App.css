@@ -27,6 +27,14 @@
 .App-link {
   color: #61dafb;
 }
+.group-svg {
+  margin-top: -10vh;
+  z-index: 2;
+  position: relative;
+}
+.shape-fill-buttom {
+  fill: #104636;
+}
 
 @keyframes App-logo-spin {
   from {

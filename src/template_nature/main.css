@@ -135,6 +135,11 @@ svg {
 .shapeGalleries .elementor-shape-fill {
 	fill: #ecf4ef;
 }
+.cover {
+    float: left;
+    width: 100%;
+    position: relative;
+}
 
 @media only screen (max-width: 600px) {
 	.title-wedding {
