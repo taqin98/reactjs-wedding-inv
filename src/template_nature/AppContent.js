@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper";
 import 'swiper/css';
 import "swiper/css/navigation";
+import AudioPlayer from '../AudioPlayer';
 
 
 const SliderComponent = () => {
@@ -38,7 +39,7 @@ export default class AppContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isHideCover: true,
+			isHideCover: false,
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
 		console.log(process.env);
@@ -120,13 +121,14 @@ export default class AppContent extends Component {
 				</div>
 			</Container>
 			<div className={(this.state.isHideCover === false) ? "d-none" : "d-block"}>
+				<AudioPlayer cbPlayAudio={this.state.isHideCover} />
 				<Card className="bg-transparent border-0" style={{"zIndex": 1}}>
 					<div className="shape">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="svg-cover">
 							<path fillOpacity="1" d="M 0 192 L 60 208 C 120 224 240 256 360 261.3 C 480 267 600 245 720 202.7 C 840 160 960 96 1080 106.7 C 1200 117 1304 143 1439 227 L 1440 288 L 1440 320 L 1380 320 C 1320 320 1200 320 1080 320 C 960 320 840 320 720 320 C 600 320 480 320 360 320 C 240 320 120 320 60 320 L 0 320 Z" className="shape-fill" data-v-c5783f70=""></path>
 							
 						</svg>
-						<Card.Img variant="top" className={(this.state.isHideCover === false) ? "d-none": "w-100 animate__animated animate__fadeIn"} src={MainImg} style={{"left": 0, "top":0, "objectFit":"cover", "height":"100vh"}} />
+						<Card.Img variant="top" className={(this.state.isHideCover === false) ? "d-none": "w-100 animate__animated animate__fadeIn"} src={MainImg} style={{"left": 0, "top":0, "objectFit":"cover", "height":"85vh"}} />
 
 					</div>
 					<img src="./assets/images/quotes_decor_nature.png" className="w-50 mx-auto" alt="Dekorasi Bunga"/>
@@ -316,7 +318,7 @@ export default class AppContent extends Component {
 							Jam Bebas	
 							</Col>
 							<Col xs={12} md={12} lg={12} className="mx-auto">
-							Desa Kuwasen 08/02 <br/>Kec. Jepara Kab. Demak<br/>
+							Desa Kuwasen 08/02 <br/>Kec. Jepara Kab. Jepara<br/>
 							(Rumah mempelai pria)
 							</Col>
 						</Row>
@@ -340,9 +342,13 @@ export default class AppContent extends Component {
 							borderColor: "white",
 							backgroundColor: "#104636",
 						}} onClick={
-							() => window.open("https://maps.app.goo.gl/8yaWThWTu2uDPX8H7?g_st=ic", "_blank")
+							() => window.open("https://maps.app.goo.gl/Tw5ELm3nWPLLRes89?g_st=ic", "_blank")
 						}>Lihat Lokasi</Button>
 					</Card>
+				</section>
+				<section className="p-0" style={{
+					}}>
+					dsfs
 				</section>
 			</div>
 		</React.Fragment>
