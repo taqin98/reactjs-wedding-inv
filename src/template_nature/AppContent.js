@@ -9,6 +9,7 @@ import { Navigation } from "swiper";
 import 'swiper/css';
 import "swiper/css/navigation";
 import AudioPlayer from '../AudioPlayer';
+import CopyTextButton from '../CopyText';
 
 
 const SliderComponent = () => {
@@ -138,9 +139,38 @@ export default class AppContent extends Component {
 				</div>
 				<Modal show={this.state.showModal} onHide={this.closeModal}>
 					<Modal.Header closeButton>
-					<Modal.Title>Kirim Hadiah</Modal.Title>
+					<Modal.Title className="w-100 text-center">Kirim Kado</Modal.Title>
 					</Modal.Header>
-					<Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+					<Modal.Body className="text-center">
+						<p>Jika memberi adalah ungkapan tanda kasih anda, Anda dapat memberi kado secara cashless.</p>
+						<div className="object-suket my-4"></div>
+						<Row className="gy-2">
+							<Col xs={4} md={4} className="mx-auto">
+								<img src={process.env.REACT_APP_PUBLIC_URL + "assets/images/logo-bri.png"} alt="" style={{
+									width: "80%",
+								}}></img>
+							</Col>
+							<Col xs={8} md={8} className="text-left">
+								<CopyTextButton textToCopy="127001010265501" an="Ayu Sri Anzar Wati" />
+							</Col>
+							<Col xs={4} md={4} className="mx-auto">
+								<img src={process.env.REACT_APP_PUBLIC_URL + "assets/images/logo-bca.png"} alt="" style={{
+									width: "80%",
+								}}></img>
+							</Col>
+							<Col xs={8} md={8} className="text-left">
+								<CopyTextButton textToCopy="2460964353" an="Nurul Muttaqin" />
+							</Col>
+							<Col xs={4} md={4} className="mx-auto">
+								<img src={process.env.REACT_APP_PUBLIC_URL + "assets/images/logo-dana.png"} alt="" style={{
+									width: "80%",
+								}}></img>
+							</Col>
+							<Col xs={8} md={8} className="text-left">
+								<CopyTextButton textToCopy="08567452717" an="Nurul Muttaqin" />
+							</Col>
+						</Row>
+					</Modal.Body>
 				</Modal>
 
 
