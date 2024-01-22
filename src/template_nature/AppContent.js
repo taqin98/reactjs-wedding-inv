@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Container, Button, Card,Row, Col} from 'react-bootstrap';
+import {Container, Button, Card,Row, Col, Modal} from 'react-bootstrap';
 import '../index.css';
 import './main.css';
 import Cover from './cover.webp';
@@ -39,10 +39,17 @@ export default class AppContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			showModal: false,
 			isHideCover: false,
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
 		console.log(process.env);
+	}
+	openModal = () => {
+		this.setState({showModal : true})
+	}
+	closeModal = () => {
+		this.setState({showModal : false})
 	}
 	hideCover = () => {
 		this.setState({isHideCover : true})
@@ -122,6 +129,21 @@ export default class AppContent extends Component {
 			</Container>
 			<div className={(this.state.isHideCover === false) ? "d-none" : "d-block"}>
 				<AudioPlayer cbPlayAudio={this.state.isHideCover} />
+				<div className="group-gift">
+				<button className="btn-gift btn btn-sm btn-success" onClick={this.openModal}>
+					<img src="https://our-wedding.link/_nuxt/img/pay_money.18b5b10.svg" alt="" style={{
+					width: "80%",
+					}}></img>
+				</button>
+				</div>
+				<Modal show={this.state.showModal} onHide={this.closeModal}>
+					<Modal.Header closeButton>
+					<Modal.Title>Kirim Hadiah</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+				</Modal>
+
+
 				<Card className="bg-transparent border-0" style={{"zIndex": 1}}>
 					<div className="shape">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="svg-cover">
