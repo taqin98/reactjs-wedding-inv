@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Button, Card,Row, Col, Modal} from 'react-bootstrap';
 import '../index.css';
 import './main.css';
-import Cover from './cover2.webp';
+import Cover from './cover3.webp';
 import MainImg from './main-image2.webp';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper";
@@ -10,6 +10,8 @@ import 'swiper/css';
 import "swiper/css/navigation";
 import AudioPlayer from '../AudioPlayer';
 import CopyTextButton from '../CopyText';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const SliderComponent = () => {
@@ -57,6 +59,9 @@ export default class AppContent extends Component {
 		// document.getElementsByClassName('cover')[0].hidden = true;
 		// document.getElementsByClassName('main-img')[0].hidden = false;
 	}
+	componentDidMount() {
+        AOS.init();
+    }
 	render(){
 		return(
 			<React.Fragment>
@@ -184,7 +189,7 @@ export default class AppContent extends Component {
 
 					</div>
 					<img src="./assets/images/quotes_decor_nature.png" className="w-50 mx-auto" alt="Dekorasi Bunga"/>
-					<Card.Body className="text-white quotes padding-balance">
+					<Card.Body className="text-white quotes padding-balance" data-aos="fade-up">
 					{this.state.quotes}
 					</Card.Body>
 					<div className="shape">
