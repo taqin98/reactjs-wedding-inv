@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Button, Card,Row, Col, Modal} from 'react-bootstrap';
 import '../index.css';
 import './main.css';
-import Cover from './cover.webp';
+import Cover from './cover2.webp';
 import MainImg from './main-image2.webp';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from "swiper";
@@ -400,7 +400,6 @@ export default class AppContent extends Component {
 				</section>
 				<section className="p-0" style={{
 					}}>
-					dsfs
 				</section>
 			</div>
 		</React.Fragment>
