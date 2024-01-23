@@ -45,9 +45,9 @@ export default class AppContent extends Component {
 		this.state = {
 			showModal: false,
 			isHideCover: false,
+			toValue: '',
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
-		console.log(process.env);
 	}
 	openModal = () => {
 		this.setState({showModal : true})
@@ -62,8 +62,16 @@ export default class AppContent extends Component {
 	}
 	componentDidMount() {
         AOS.init();
+		const getParams = new URLSearchParams(window.location.search);
+		const toValue = getParams.get('to'); // Retrieve the 'to' parameter value
+
+		// Set the 'toValue' in the component state
+		this.setState({ toValue });
+
     }
 	render(){
+		const { toValue } = this.state;
+
 		return(
 			<React.Fragment>
 			<style jsx="true">
@@ -130,6 +138,12 @@ export default class AppContent extends Component {
 							<Button onClick={() => this.hideCover()} className="position-relative mx-auto bg-transparent btn-open mt-5">Buka Undangan</Button>
 						</Card.Body>
 					</Card>
+					{ toValue !== null && (
+						<div className="container-tamu mt-5">
+							<p>Kepada Yth. <br/>Bapak/Ibu/Saudara/i</p>
+							<p>{toValue}</p>
+						</div>
+					)}
 
 					<img alt="empty" src={Cover} className="w-100 position-absolute" style={{"left": 0, "top":0, "objectFit":"cover", "height":"100vh"}}/>
 				</div>

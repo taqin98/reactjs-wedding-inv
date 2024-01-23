@@ -204,6 +204,11 @@ svg {
     font-size: 1.5rem;
     line-height: 1;
 }
+.container-tamu {
+	position: relative;
+	z-index: 2;
+	font-size: .7rem;
+}
 
 @media only screen (max-width: 600px) {
 	.title-wedding {
