@@ -177,6 +177,33 @@ svg {
 .modal-content {
 	background-color: #ebebe3;
 }
+.container-countdown {
+	position: absolute;
+	top: 10px;
+	z-index: 3;
+}
+.container-countdown .days {
+    font-size: 1.5em;
+    display: block;
+}
+.container-countdown li {
+    display: inline-block;
+    list-style-type: none;
+    font-size: 1em;
+    padding: .8em;
+    text-transform: uppercase;
+    text-align: center;
+}
+.container-countdown li span strong {
+    font-family: 'rosemary';
+	font-size: 5rem;
+    line-height: .2;
+}
+.container-countdown li span {
+    display: block;
+    font-size: 1.5rem;
+    line-height: 1;
+}
 
 @media only screen (max-width: 600px) {
 	.title-wedding {

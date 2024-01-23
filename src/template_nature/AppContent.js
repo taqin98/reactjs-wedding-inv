@@ -12,6 +12,7 @@ import AudioPlayer from '../AudioPlayer';
 import CopyTextButton from '../CopyText';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import CountdownTimer from '../CountdownTimer';
 
 
 const SliderComponent = () => {
@@ -185,8 +186,11 @@ export default class AppContent extends Component {
 							<path fillOpacity="1" d="M 0 192 L 60 208 C 120 224 240 256 360 261.3 C 480 267 600 245 720 202.7 C 840 160 960 96 1080 106.7 C 1200 117 1304 143 1439 227 L 1440 288 L 1440 320 L 1380 320 C 1320 320 1200 320 1080 320 C 960 320 840 320 720 320 C 600 320 480 320 360 320 C 240 320 120 320 60 320 L 0 320 Z" className="shape-fill" data-v-c5783f70=""></path>
 							
 						</svg>
-						<Card.Img variant="top" className={(this.state.isHideCover === false) ? "d-none": "w-100 animate__animated animate__fadeIn"} src={MainImg} style={{"left": 0, "top":0, "objectFit":"cover", "height":"85vh"}} />
-
+						<Card.Img variant="top" className={(this.state.isHideCover === false) ? "d-none": "w-100 animate__animated animate__fadeIn"} src={MainImg} style={{"left": 0, "top":0, "objectFit":"cover", "height":"100vh"}} />
+						<div className="container-countdown text-center text-white w-100">
+							<CountdownTimer />
+							<p className="fst-italic">Senin, 05 Februari 2024</p>
+						</div>
 					</div>
 					<img src="./assets/images/quotes_decor_nature.png" className="w-50 mx-auto" alt="Dekorasi Bunga"/>
 					<Card.Body className="text-white quotes padding-balance" data-aos="fade-up">
