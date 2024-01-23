@@ -11,9 +11,9 @@ root.render(
   <React.StrictMode>
     <App />
     <footer className="footer text-white text-center">
-        Made by &#10084; <a href="https://www.instagram.com/taqin_taqin_/" 
+        Made with &#10084; <a href="https://www.instagram.com/taqin_taqin_/" 
         className="text-white"
-        target="_blank" rel="noreferrer">taqin</a> with more errors, bugs and unstable features.
+        target="_blank" rel="noreferrer">taqin</a>. <br/>more errors, bugs and unstable features. :v
       </footer>
   </React.StrictMode>
 );
