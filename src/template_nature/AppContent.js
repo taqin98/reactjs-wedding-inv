@@ -162,10 +162,10 @@ export default class AppContent extends Component {
 				<Container style={{ "width": "100%", "margin": "auto" }}>
 					<div className={(this.state.isHideCover === false) ? 'd-block' : 'd-none'}>
 						<Card className="bg-transparent border-0" style={{ "zIndex": 1, "marginTop": "8vh" }}>
-							<Card.Title className="title-wedding">THE WEDDING OF</Card.Title>
+							<Card.Title className="title-wedding" data-aos={includeAOS ? "fade-down" : ""} data-aos-duration={includeAOS ? '1000' : ''}>THE WEDDING OF</Card.Title>
 							<Card.Body className="p-0 row">
-								<span className="name-wedding" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''}  >Ayu & Taqin</span>
-								<span className="subtitle-wedding" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''}  >05 . 02 . 2024</span>
+								<span className="name-wedding" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '2000' : ''}  >Ayu & Taqin</span>
+								<span className="subtitle-wedding" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''}  >05 . 02 . 2024</span>
 							</Card.Body>
 
 							<Card.Body>
@@ -459,6 +459,9 @@ export default class AppContent extends Component {
 							<Row className="mx-auto">
 								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Band Akustik
+								</Col>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
+									Ahad, 04 Februari 2024
 								</Col>
 								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Pukul 20.00 WIB - Selesai
