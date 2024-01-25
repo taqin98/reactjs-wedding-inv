@@ -44,6 +44,8 @@ export default class AppContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			destroyPopover: false, //hide permanent popover
+			showPopover: false,
 			isScrollingDown: true, 
 			showModal: false,
 			isHideCover: false,
@@ -81,20 +83,28 @@ export default class AppContent extends Component {
 	handleScroll = () => {
 		const currentScrollY = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
 		
-		console.log(currentScrollY, 'currentScrollY');
+		// console.log(currentScrollY, 'currentScrollY');
 		if (currentScrollY < 1) {
 		  // Scrolling down to the bottom of the page
 		  this.setState({ isScrollingDown: false });
 		}
-	
-	  };
-	
+		
+		if(currentScrollY < 100) {
+			if(this.state.destroyPopover === false) {
+				this.setState({ showPopover: true });
+			}
+		}
+	};
+	onClosePopover = () => {
+		this.setState({ showPopover: false });
+		this.setState({ destroyPopover: true });
+	}
 
 	
 	render() {
-		const { toValue, isScrollingDown } = this.state;
+		const { toValue, isScrollingDown, showPopover } = this.state;
     	const includeAOS = isScrollingDown;
-		console.log(includeAOS, 'includeAOS', isScrollingDown);
+		// console.log(isScrollingDown, showPopover);
 
 		return (
 			<React.Fragment>
@@ -154,7 +164,7 @@ export default class AppContent extends Component {
 						<Card className="bg-transparent border-0" style={{ "zIndex": 1, "marginTop": "8vh" }}>
 							<Card.Title className="title-wedding">THE WEDDING OF</Card.Title>
 							<Card.Body className="p-0 row">
-								<span className="name-wedding" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1500' : ''}  >Ayu & Taqin</span>
+								<span className="name-wedding" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''}  >Ayu & Taqin</span>
 								<span className="subtitle-wedding" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''}  >05 . 02 . 2024</span>
 							</Card.Body>
 
@@ -179,11 +189,24 @@ export default class AppContent extends Component {
 				<div className={(this.state.isHideCover === false) ? "d-none" : "d-block"}>
 					<AudioPlayer cbPlayAudio={this.state.isHideCover} />
 					<div className="group-gift">
-						<button className="btn-gift btn btn-sm btn-success" onClick={this.openModal}>
+						<button className="btn-gift btn btn-sm btn-success" onClick={this.openModal}
+						>
 							<img src="https://our-wedding.link/_nuxt/img/pay_money.18b5b10.svg" alt="" style={{
 								width: "80%",
 							}}></img>
 						</button>
+						<div className={`popover ${showPopover ? 'd-block' : 'd-none'}`}>
+							<div className="arrow"></div>
+							<h3 className="popover-header">
+								Amplop digital
+								<button aria-label="Close" type="button" className="btn btn-close" onClick={this.onClosePopover}>
+								<span aria-hidden="true" className="d-inline-block">×</span>
+								</button>
+							</h3>
+							<div className="popover-body">
+								<span>Sekarang <b>hadiahmu</b> bisa tersampaikan secara digital</span>
+							</div>
+						</div>
 					</div>
 					<Modal show={this.state.showModal} onHide={this.closeModal}>
 						<Modal.Header closeButton>
@@ -235,7 +258,7 @@ export default class AppContent extends Component {
 							</div>
 						</div>
 						<img src="./assets/images/quotes_decor_nature.png" className="w-50 mx-auto" alt="Dekorasi Bunga" />
-						<Card.Body className="text-white quotes padding-balance" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''}>
+						<Card.Body className="text-white quotes padding-balance" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''}>
 							{this.state.quotes}
 						</Card.Body>
 						<div className="shape">
@@ -251,13 +274,13 @@ export default class AppContent extends Component {
 						</div>
 						<Row className="mx-0">
 							<Col xs={12} md={6} className="row mx-auto position-relative overflow-hidden">
-								<div className="box-female position-relative" data-aos={includeAOS ? 'fade-right' : ''} data-aos-duration={includeAOS ? '1500' : ''}>
+								<div className="box-female position-relative" data-aos={includeAOS ? 'fade-right' : ''} data-aos-duration={includeAOS ? '1000' : ''}>
 									<div className="couple-img">
 										<img alt="images" src="./assets/images/template_1/female_pict2.jpeg" className="img-responsive rounded-circle p-3" style={{ "width": "198px" }} />
 									</div>
 									<img alt="images" src="./assets/images/border_couple.png" className="img-responsive position-relative" style={{ "width": "198px", "zIndex": 2 }} />
 								</div>
-								<Card className="bg-transparent border-0" data-aos={includeAOS ? 'fade-right' : ''} data-aos-duration={includeAOS ? '1500' : ''}>
+								<Card className="bg-transparent border-0" data-aos={includeAOS ? 'fade-right' : ''} data-aos-duration={includeAOS ? '1000' : ''}>
 									<Card.Body className="text-black padding-balance text-black">
 										<div className="link-instagram font-roboto-black text-black">
 											<svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img" aria-label="instagram" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi-instagram b-icon bi" data-v-c5783f70=""><g data-v-c5783f70=""><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path></g>
@@ -279,13 +302,13 @@ export default class AppContent extends Component {
 								</div>
 							</Col>
 							<Col xs={12} md={12} className="mx-auto position-relative overflow-hidden">
-								<div className="box-female position-relative" data-aos={includeAOS ? 'fade-left' : ''} data-aos-duration={includeAOS ? '1500' : ''}>
+								<div className="box-female position-relative" data-aos={includeAOS ? 'fade-left' : ''} data-aos-duration={includeAOS ? '1000' : ''}>
 									<div className="couple-img">
 										<img alt="images" src="./assets/images/template_1/male_pict2.jpeg" className="img-responsive rounded-circle p-3" style={{ "width": "198px" }} />
 									</div>
 									<img alt="images" src="./assets/images/border_couple.png" className="img-responsive position-relative" style={{ "width": "198px", "zIndex": 2 }} />
 								</div>
-								<Card className="bg-transparent border-0" data-aos={includeAOS ? 'fade-left' : ''} data-aos-duration={includeAOS ? '1500' : ''}>
+								<Card className="bg-transparent border-0" data-aos={includeAOS ? 'fade-left' : ''} data-aos-duration={includeAOS ? '1000' : ''}>
 									<Card.Body className="text-black padding-balance text-black">
 										<div className="link-instagram font-roboto-black text-black">
 											<svg viewBox="0 0 16 16" width="1em" height="1em" focusable="false" role="img" aria-label="instagram" xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="bi-instagram b-icon bi" data-v-c5783f70=""><g data-v-c5783f70=""><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path></g>
@@ -310,7 +333,7 @@ export default class AppContent extends Component {
 									<h5 className="date-title" data-aos={includeAOS ? 'zoom-in' : ''} data-aos-duration={includeAOS ? '1000' : ''}  >
 										05 . 02 . 2024
 									</h5>
-									<p className="mx-auto mt-5" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''}  >
+									<p className="mx-auto mt-5" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''}  >
 										"Menciptakan kenangan adalah hadiah yang tak ternilai harganya.
 										Kenangan akan bertahan seumur hidup; benda-benda hanya dalam waktu singkat."
 									</p>
@@ -336,18 +359,18 @@ export default class AppContent extends Component {
 										<Col xs={12} md={12} lg={12} className="mx-auto my-2">
 											<div className="object-suket my-4"></div>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto mt-2" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto mt-2" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} >
 											<h4 className="font-rosemary_jasmine-title">
 												Akad
 											</h4>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Senin, 05 Februari 2024
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Pukul 10.00 WIB - Selesai
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Desa Jleper 02/03 Kec. Mijen Kab. Demak<br />
 											(Rumah mempelai wanita)
 										</Col>
@@ -357,18 +380,18 @@ export default class AppContent extends Component {
 										<Col xs={12} md={12} lg={12} className="mx-auto my-2">
 											<div className="object-suket my-4"></div>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} >
 											<h4 className="font-rosemary_jasmine-title">
 												Pengajian
 											</h4>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Senin, 05 Februari 2024
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Pukul 20.00 WIB - Selesai
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 											Desa Jleper 02/03 Kec. Mijen Kab. Demak<br />
 											(Rumah mempelai wanita)
 										</Col>
@@ -413,16 +436,16 @@ export default class AppContent extends Component {
 					}}>
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<Card.Title className="font-rosemary_jasmine-title mt-4 pt-4"
-							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1500' : ''} 
+							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} 
 							>Tasyakuran</Card.Title>
 							<Row className="mx-auto mt-2">
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Ahad, 04 Februari 2024
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Jam Bebas
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Desa Kuwasen 08/02 <br />Kec. Jepara Kab. Jepara<br />
 									(Rumah mempelai pria)
 								</Col>
@@ -431,13 +454,13 @@ export default class AppContent extends Component {
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<div className="object-suket my-4"></div>
 							<Card.Title className="font-rosemary_jasmine-title pt-4"
-							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1500' : ''} 
+							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} 
 							>Hiburan</Card.Title>
 							<Row className="mx-auto">
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Band Akustik
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''} >
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
 									Pukul 20.00 WIB - Selesai
 								</Col>
 							</Row>
