@@ -272,9 +272,19 @@ svg {
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+.section-footer {
+	padding-top: 30px !important;
+    float: left;
+    width: 100%;
+    position: relative;
+}
 .footer {
 	font-size: 12px;
 	padding: 10px 0;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: rgb(16, 70, 54);
 }
 
 @media only screen (max-width: 600px) {
