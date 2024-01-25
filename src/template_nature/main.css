@@ -20,6 +20,7 @@
 
 body {
 	background: #2d433d;
+	overflow-x: hidden;
 }
 
 .font-roboto-black {
@@ -60,6 +61,7 @@ body {
 	animation-delay:  0.6s;
 	cursor:  pointer;
 	border-radius: 25rem;
+	animation-delay: 0.6s;
 }
 .btn-open:hover {
 	color: rgb(16, 70, 54);
