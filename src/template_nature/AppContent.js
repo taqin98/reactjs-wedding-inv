@@ -63,6 +63,8 @@ export default class AppContent extends Component {
 	}
 	componentDidMount() {
 		AOS.init();
+		AOS.refresh();
+
 		const getParams = new URLSearchParams(window.location.search);
 		const toValue = getParams.get('to'); // Retrieve the 'to' parameter value
 
@@ -76,6 +78,7 @@ export default class AppContent extends Component {
 	}
 	handleAnimationEnd = (element) => {
 		// Remove the data-aos attribute to prevent further animations
+		console.log('element', element);
 		element.removeAttribute('data-aos');
 	};
 	render() {
@@ -139,8 +142,8 @@ export default class AppContent extends Component {
 						<Card className="bg-transparent border-0" style={{ "zIndex": 1, "marginTop": "8vh" }}>
 							<Card.Title className="title-wedding">THE WEDDING OF</Card.Title>
 							<Card.Body className="p-0 row">
-								<span className="name-wedding" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >Ayu & Taqin</span>
-								<span className="subtitle-wedding" data-aos="fade-up" data-aos-duration="1000" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >05 . 02 . 2024</span>
+								<span className="name-wedding" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >Ayu & Taqin</span>
+								<span className="subtitle-wedding" data-aos="fade-up" data-aos-duration="1000" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >05 . 02 . 2024</span>
 							</Card.Body>
 
 							<Card.Body>
@@ -220,7 +223,7 @@ export default class AppContent extends Component {
 							</div>
 						</div>
 						<img src="./assets/images/quotes_decor_nature.png" className="w-50 mx-auto" alt="Dekorasi Bunga" />
-						<Card.Body className="text-white quotes padding-balance" data-aos="fade-up" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >
+						<Card.Body className="text-white quotes padding-balance" data-aos="fade-up" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >
 							{this.state.quotes}
 						</Card.Body>
 						<div className="shape">
@@ -235,7 +238,7 @@ export default class AppContent extends Component {
 							<h1 className="font-rosemary_jasmine-title">Calon Pengantin</h1>
 						</div>
 						<Row className="mx-0">
-							<Col xs={12} md={6} className="row mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >
+							<Col xs={12} md={6} className="row mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >
 								<div className="box-female position-relative">
 									<div className="couple-img">
 										<img alt="images" src="./assets/images/template_1/female_pict2.jpeg" className="img-responsive rounded-circle p-3" style={{ "width": "198px" }} />
@@ -263,7 +266,7 @@ export default class AppContent extends Component {
 									<h1 className="font-rosemary">&</h1>
 								</div>
 							</Col>
-							<Col xs={12} md={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >
+							<Col xs={12} md={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >
 								<div className="box-female position-relative">
 									<div className="couple-img">
 										<img alt="images" src="./assets/images/template_1/male_pict2.jpeg" className="img-responsive rounded-circle p-3" style={{ "width": "198px" }} />
@@ -292,10 +295,10 @@ export default class AppContent extends Component {
 						<Row className="mx-0">
 							<Col xs={12} md={12} className="">
 								<div className="custom-quotes pt-0">
-									<h5 className="date-title" data-aos="fade-up" data-aos-duration="1000" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >
+									<h5 className="date-title" data-aos="fade-up" data-aos-duration="1000" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >
 										05 . 02 . 2024
 									</h5>
-									<p className="mx-auto mt-5" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} >
+									<p className="mx-auto mt-5" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true" >
 										"Menciptakan kenangan adalah hadiah yang tak ternilai harganya.
 										Kenangan akan bertahan seumur hidup; benda-benda hanya dalam waktu singkat."
 									</p>
@@ -321,18 +324,18 @@ export default class AppContent extends Component {
 										<Col xs={12} md={12} lg={12} className="mx-auto my-2">
 											<div className="object-suket my-4"></div>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto mt-2" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto mt-2" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											<h4 className="font-rosemary_jasmine-title">
 												Akad
 											</h4>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Senin, 05 Februari 2024
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Pukul 10.00 WIB - Selesai
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Desa Jleper 02/03 Kec. Mijen Kab. Demak<br />
 											(Rumah mempelai wanita)
 										</Col>
@@ -342,18 +345,18 @@ export default class AppContent extends Component {
 										<Col xs={12} md={12} lg={12} className="mx-auto my-2">
 											<div className="object-suket my-4"></div>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											<h4 className="font-rosemary_jasmine-title">
 												Pengajian
 											</h4>
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Senin, 05 Februari 2024
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Pukul 20.00 WIB - Selesai
 										</Col>
-										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+										<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 											Desa Jleper 02/03 Kec. Mijen Kab. Demak<br />
 											(Rumah mempelai wanita)
 										</Col>
@@ -398,16 +401,16 @@ export default class AppContent extends Component {
 					}}>
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<Card.Title className="font-rosemary_jasmine-title mt-4 pt-4"
-							data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}
+							data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true"
 							>Tasyakuran</Card.Title>
 							<Row className="mx-auto mt-2">
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 									Ahad, 04 Februari 2024
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 									Jam Bebas
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-right" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 									Desa Kuwasen 08/02 <br />Kec. Jepara Kab. Jepara<br />
 									(Rumah mempelai pria)
 								</Col>
@@ -416,13 +419,13 @@ export default class AppContent extends Component {
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<div className="object-suket my-4"></div>
 							<Card.Title className="font-rosemary_jasmine-title pt-4"
-							data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}
+							data-aos="zoom-in" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true"
 							>Hiburan</Card.Title>
 							<Row className="mx-auto">
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 									Band Akustik
 								</Col>
-								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)}>
+								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos="fade-left" data-aos-duration="1500" onAnimationEnd={(e) => this.handleAnimationEnd(e.target)} data-aos-once="true">
 									Pukul 20.00 WIB - Selesai
 								</Col>
 							</Row>
