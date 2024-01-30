@@ -482,7 +482,7 @@ export default class AppContent extends Component {
 							}>Lihat Lokasi</Button>
 						</Card>
 					</section>
-					<FormMessage />
+					{/* <FormMessage /> */}
 					<section className="section-footer bg-primary">
 						<div className="footer w-100 text-white text-center">
 							Made with &#10084; <a href="https://www.instagram.com/taqin_taqin_/"
