@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
 
-const CountdownTimer = () => {
+const CountdownTimer = ({includeAOS}) => {
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -11,6 +12,9 @@ const CountdownTimer = () => {
   // Set your target date and time
   const targetDate = new Date('2024-02-05T10:00:00').getTime();
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date().getTime();

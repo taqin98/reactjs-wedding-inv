@@ -22,6 +22,10 @@ body {
 	background: #2d433d;
 	overflow-x: hidden;
 }
+.btn-success {
+    background-color: rgb(16, 70, 54);
+    border-color: #104636;
+}
 
 .font-roboto-black {
 	font-family: 'Roboto Black';
@@ -359,7 +363,7 @@ svg {
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .section-footer {
-	padding-top: 30px !important;
+	/* padding-top: 30px !important; */
     float: left;
     width: 100%;
     position: relative;

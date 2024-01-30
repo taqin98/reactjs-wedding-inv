@@ -253,7 +253,7 @@ export default class AppContent extends Component {
 							</svg>
 							<Card.Img variant="top" className={(this.state.isHideCover === false) ? "d-none" : "w-100 animate__animated animate__fadeIn"} src={MainImg} style={{ "left": 0, "top": 0, "objectFit": "cover", "height": "100vh" }} />
 							<div className="container-countdown text-center text-white w-100">
-								<CountdownTimer />
+								<CountdownTimer includeAOS={includeAOS} />
 								<p className="fst-italic">Senin, 05 Februari 2024</p>
 							</div>
 						</div>
@@ -482,7 +482,7 @@ export default class AppContent extends Component {
 							}>Lihat Lokasi</Button>
 						</Card>
 					</section>
-					{/* <FormMessage /> */}
+					<FormMessage />
 					<section className="section-footer bg-primary">
 						<div className="footer w-100 text-white text-center">
 							Made with &#10084; <a href="https://www.instagram.com/taqin_taqin_/"
