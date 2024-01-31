@@ -46,10 +46,11 @@ export default class AppContent extends Component {
 		this.state = {
 			destroyPopover: false, //hide permanent popover
 			showPopover: false,
-			isScrollingDown: true, 
+			isScrollingDown: true,
 			showModal: false,
 			isHideCover: false,
 			toValue: '',
+			fromValue: '',
 			quotes: `Dan Diantara tanda-tanda kebesaran-Nya ialah diciptakan-Nya untukmu pasangan hidup dari jenismu sendiri supaya kamu mendapatkan ketenangan hati dan dijadikan-Nya kasih sayang diantara kamu sesungguhnya yang demikian menjadi tanda-tanda kebesaran-Nya bagi orang-orang yang berfikir \n(Surat Ar-Ruum:21)`
 		};
 	}
@@ -67,30 +68,32 @@ export default class AppContent extends Component {
 
 		const getParams = new URLSearchParams(window.location.search);
 		const toValue = getParams.get('to'); // Retrieve the 'to' parameter value
+		const fromValue = getParams.get('from'); // Retrieve the 'from' parameter value
 
 		// Set the 'toValue' in the component state
 		this.setState({ toValue });
+		this.setState({ fromValue });
 		window.addEventListener('scroll', this.handleScroll);
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this.handleScroll);
-	  }
-	
+	}
+
 	componentDidUpdate() {
 		// Refresh AOS whenever the component updates
 		AOS.refresh();
 	}
 	handleScroll = () => {
 		const currentScrollY = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
-		
+
 		// console.log(currentScrollY, 'currentScrollY');
 		if (currentScrollY < 1) {
-		  // Scrolling down to the bottom of the page
-		  this.setState({ isScrollingDown: false });
+			// Scrolling down to the bottom of the page
+			this.setState({ isScrollingDown: false });
 		}
-		
-		if(currentScrollY < 100) {
-			if(this.state.destroyPopover === false) {
+
+		if (currentScrollY < 100) {
+			if (this.state.destroyPopover === false) {
 				this.setState({ showPopover: true });
 			}
 		}
@@ -100,10 +103,10 @@ export default class AppContent extends Component {
 		this.setState({ destroyPopover: true });
 	}
 
-	
+
 	render() {
-		const { toValue, isScrollingDown, showPopover } = this.state;
-    	const includeAOS = isScrollingDown;
+		const { toValue, fromValue, isScrollingDown, showPopover } = this.state;
+		const includeAOS = isScrollingDown;
 		// console.log(isScrollingDown, showPopover);
 
 		return (
@@ -165,12 +168,19 @@ export default class AppContent extends Component {
 							<Card.Title className="title-wedding" data-aos={includeAOS ? "fade-down" : ""} data-aos-duration={includeAOS ? '1000' : ''}>THE WEDDING OF</Card.Title>
 							<Card.Body className="p-0 row">
 								<span className="name-wedding" data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '2000' : ''}  >Ayu & Taqin</span>
-								<span className="subtitle-wedding" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''}  >05 . 02 . 2024</span>
+								<span className="subtitle-wedding" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1500' : ''}  >
+									{fromValue !== null ? (
+										<>04</>
+									) : (
+										<>05</>
+									)}
+									. 02 . 2024
+								</span>
 							</Card.Body>
 
 							<Card.Body>
-								<Button onClick={() => this.hideCover()} 
-								className="position-relative mx-auto bg-transparent btn-open mt-5
+								<Button onClick={() => this.hideCover()}
+									className="position-relative mx-auto bg-transparent btn-open mt-5
 								animate__animated animate__flash animate__infinite animate__slower
 								"
 								>Buka Undangan</Button>
@@ -200,7 +210,7 @@ export default class AppContent extends Component {
 							<h3 className="popover-header">
 								Amplop digital
 								<button aria-label="Close" type="button" className="btn btn-close" onClick={this.onClosePopover}>
-								<span aria-hidden="true" className="d-inline-block">×</span>
+									<span aria-hidden="true" className="d-inline-block">×</span>
 								</button>
 							</h3>
 							<div className="popover-body">
@@ -436,7 +446,7 @@ export default class AppContent extends Component {
 					}}>
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<Card.Title className="font-rosemary_jasmine-title mt-4 pt-4"
-							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} 
+								data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''}
 							>Tasyakuran</Card.Title>
 							<Row className="mx-auto mt-2">
 								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
@@ -454,7 +464,7 @@ export default class AppContent extends Component {
 						<Card className="bg-transparent shadow-none border-0 text-black">
 							<div className="object-suket my-4"></div>
 							<Card.Title className="font-rosemary_jasmine-title pt-4"
-							data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''} 
+								data-aos={includeAOS ? "zoom-in" : ""} data-aos-duration={includeAOS ? '1000' : ''}
 							>Hiburan</Card.Title>
 							<Row className="mx-auto">
 								<Col xs={12} md={12} lg={12} className="mx-auto" data-aos={includeAOS ? 'fade-up' : ''} data-aos-duration={includeAOS ? '1000' : ''} >
